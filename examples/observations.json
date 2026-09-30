@@ -1,0 +1,7 @@
+[
+  {"id":"synth-a1","item":"glassleaf","metric":"survey_index","unit":"points","period":"2030-01-31","value":"80","synthetic":true},
+  {"id":"synth-a2","item":"glassleaf","metric":"survey_index","unit":"points","period":"2030-02-28","value":"92","synthetic":true},
+  {"id":"synth-b1","item":"moonroot","metric":"volume_index","unit":"points","period":"2030-01-31","value":"40","synthetic":true},
+  {"id":"synth-b2","item":"moonroot","metric":"volume_index","unit":"points","period":"2030-02-28","value":"36","synthetic":true},
+  {"id":"synth-c1","item":"silverstem","metric":"survey_index","unit":"points","period":"2030-02-28","value":"25","synthetic":true}
+]
