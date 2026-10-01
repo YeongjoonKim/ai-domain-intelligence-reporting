@@ -1,0 +1,66 @@
+<!doctype html><html lang="ko"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta http-equiv="Content-Security-Policy" content="default-src &apos;none&apos;; style-src &apos;unsafe-inline&apos;; base-uri &apos;none&apos;; form-action &apos;none&apos;"><title>Domain Intelligence · Execution Evidence</title><style>body{margin:0;background:#eff3f7;color:#183349;font:16px system-ui,sans-serif}main{max-width:1160px;margin:30px auto;padding:0 24px}section{background:white;padding:28px;margin:24px 0;border:1px solid #cbd5df;border-radius:12px}h1{font-size:28px}h2{font-size:25px}.scope{color:#147863;font-size:12px;font-weight:700;letter-spacing:1px}.limit{font-size:13px;color:#546478}pre{font:14px/1.5 monospace;white-space:pre-wrap;overflow-wrap:anywhere}.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}article{padding:15px;background:#f3f6f9;border-radius:8px}table{width:100%;border-collapse:collapse}td,th{padding:12px 6px;text-align:left;border-bottom:1px solid #d8e0e8;font-size:13px}@media(max-width:700px){.cards{grid-template-columns:1fr}table{display:block;overflow:auto}}</style><main><h1>Domain Intelligence · Execution Evidence</h1><p>Reconstructed Public Example · Python 실행 결과를 렌더링한 검토 문서</p><section id="inputs"><p class="scope">EXECUTED PUBLIC SAMPLE · SYNTHETIC</p><h2>Observation contract</h2><p>합성 입력의 출처 ID·단위·시점을 보존합니다.</p><table><tr><th>id</th><th>item</th><th>metric</th><th>unit</th><th>period</th><th>value</th></tr><tr><td>synth-a1</td><td>glassleaf</td><td>survey_index</td><td>points</td><td>2030-01-31</td><td>80</td></tr><tr><td>synth-a2</td><td>glassleaf</td><td>survey_index</td><td>points</td><td>2030-02-28</td><td>92</td></tr><tr><td>synth-b1</td><td>moonroot</td><td>volume_index</td><td>points</td><td>2030-01-31</td><td>40</td></tr><tr><td>synth-b2</td><td>moonroot</td><td>volume_index</td><td>points</td><td>2030-02-28</td><td>36</td></tr><tr><td>synth-c1</td><td>silverstem</td><td>survey_index</td><td>points</td><td>2030-02-28</td><td>25</td></tr></table><p class="limit">운영 데이터·실시간 API·모델 성능의 증거가 아닙니다.</p></section><section id="analysis"><p class="scope">EXECUTED PUBLIC SAMPLE · SYNTHETIC</p><h2>Domain analysis</h2><p>단위별 비교와 부족한 이력을 구분한 실제 계산 결과입니다.</p><div class="cards"><article><h3>glassleaf</h3><pre>{
+  &quot;item&quot;: &quot;glassleaf&quot;,
+  &quot;metric&quot;: &quot;survey_index&quot;,
+  &quot;unit&quot;: &quot;points&quot;,
+  &quot;status&quot;: &quot;compared&quot;,
+  &quot;evidence&quot;: [
+    &quot;synth-a1&quot;,
+    &quot;synth-a2&quot;
+  ],
+  &quot;latest_period&quot;: &quot;2030-02-28&quot;,
+  &quot;latest_value&quot;: &quot;92&quot;,
+  &quot;previous_period&quot;: &quot;2030-01-31&quot;,
+  &quot;delta&quot;: &quot;12&quot;,
+  &quot;percent&quot;: &quot;15.00&quot;,
+  &quot;signal&quot;: &quot;increase&quot;
+}</pre></article><article><h3>moonroot</h3><pre>{
+  &quot;item&quot;: &quot;moonroot&quot;,
+  &quot;metric&quot;: &quot;volume_index&quot;,
+  &quot;unit&quot;: &quot;points&quot;,
+  &quot;status&quot;: &quot;compared&quot;,
+  &quot;evidence&quot;: [
+    &quot;synth-b1&quot;,
+    &quot;synth-b2&quot;
+  ],
+  &quot;latest_period&quot;: &quot;2030-02-28&quot;,
+  &quot;latest_value&quot;: &quot;36&quot;,
+  &quot;previous_period&quot;: &quot;2030-01-31&quot;,
+  &quot;delta&quot;: &quot;-4&quot;,
+  &quot;percent&quot;: &quot;-10.00&quot;,
+  &quot;signal&quot;: &quot;decrease&quot;
+}</pre></article><article><h3>silverstem</h3><pre>{
+  &quot;item&quot;: &quot;silverstem&quot;,
+  &quot;metric&quot;: &quot;survey_index&quot;,
+  &quot;unit&quot;: &quot;points&quot;,
+  &quot;status&quot;: &quot;insufficient_history&quot;,
+  &quot;evidence&quot;: [
+    &quot;synth-c1&quot;
+  ],
+  &quot;latest_period&quot;: &quot;2030-02-28&quot;,
+  &quot;latest_value&quot;: &quot;25&quot;
+}</pre></article></div><p class="limit">운영 데이터·실시간 API·모델 성능의 증거가 아닙니다.</p></section><section id="report"><p class="scope">EXECUTED PUBLIC SAMPLE · SYNTHETIC</p><h2>Generated evidence-linked brief</h2><p>템플릿으로 생성한 Markdown 보고서입니다. LLM이 작성한 문장으로 표시하지 않습니다.</p><pre># Synthetic Domain Brief
+
+**Reconstructed Public Demo · not operational data**
+
+As of: 2030-02-28
+
+## Evidence-backed observations
+
+- {&quot;item&quot;: &quot;glassleaf&quot;, &quot;metric&quot;: &quot;survey_index&quot;, &quot;unit&quot;: &quot;points&quot;}: compared
+  - Change: 12; percent: 15.00
+  - Evidence: synth-a1, synth-a2
+- {&quot;item&quot;: &quot;moonroot&quot;, &quot;metric&quot;: &quot;volume_index&quot;, &quot;unit&quot;: &quot;points&quot;}: compared
+  - Change: -4; percent: -10.00
+  - Evidence: synth-b1, synth-b2
+- {&quot;item&quot;: &quot;silverstem&quot;, &quot;metric&quot;: &quot;survey_index&quot;, &quot;unit&quot;: &quot;points&quot;}: insufficient_history
+  - Evidence: synth-c1
+
+## Opportunity / risk interpretation
+
+An increase is a candidate for investigation, not a sales decision.
+Missing history, unit differences and conflicting periods remain unresolved.
+
+## Limitations
+
+Observed change is not a forecast or a business recommendation.
+Narration is a template. No LLM, external API, prices or customer records are used.</pre><p class="limit">운영 데이터·실시간 API·모델 성능의 증거가 아닙니다.</p></section></main></html>

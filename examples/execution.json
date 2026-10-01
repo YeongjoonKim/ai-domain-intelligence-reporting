@@ -1,0 +1,104 @@
+{
+  "scope": "executed_offline_synthetic_report_not_production",
+  "observations": [
+    {
+      "id": "synth-a1",
+      "item": "glassleaf",
+      "metric": "survey_index",
+      "unit": "points",
+      "period": "2030-01-31",
+      "value": "80",
+      "synthetic": true
+    },
+    {
+      "id": "synth-a2",
+      "item": "glassleaf",
+      "metric": "survey_index",
+      "unit": "points",
+      "period": "2030-02-28",
+      "value": "92",
+      "synthetic": true
+    },
+    {
+      "id": "synth-b1",
+      "item": "moonroot",
+      "metric": "volume_index",
+      "unit": "points",
+      "period": "2030-01-31",
+      "value": "40",
+      "synthetic": true
+    },
+    {
+      "id": "synth-b2",
+      "item": "moonroot",
+      "metric": "volume_index",
+      "unit": "points",
+      "period": "2030-02-28",
+      "value": "36",
+      "synthetic": true
+    },
+    {
+      "id": "synth-c1",
+      "item": "silverstem",
+      "metric": "survey_index",
+      "unit": "points",
+      "period": "2030-02-28",
+      "value": "25",
+      "synthetic": true
+    }
+  ],
+  "analysis": {
+    "disclosure": "Reconstructed Public Demo",
+    "as_of": "2030-02-28",
+    "data_origin": "synthetic",
+    "insight_engine": "deterministic_template_not_llm",
+    "insights": [
+      {
+        "item": "glassleaf",
+        "metric": "survey_index",
+        "unit": "points",
+        "status": "compared",
+        "evidence": [
+          "synth-a1",
+          "synth-a2"
+        ],
+        "latest_period": "2030-02-28",
+        "latest_value": "92",
+        "previous_period": "2030-01-31",
+        "delta": "12",
+        "percent": "15.00",
+        "signal": "increase"
+      },
+      {
+        "item": "moonroot",
+        "metric": "volume_index",
+        "unit": "points",
+        "status": "compared",
+        "evidence": [
+          "synth-b1",
+          "synth-b2"
+        ],
+        "latest_period": "2030-02-28",
+        "latest_value": "36",
+        "previous_period": "2030-01-31",
+        "delta": "-4",
+        "percent": "-10.00",
+        "signal": "decrease"
+      },
+      {
+        "item": "silverstem",
+        "metric": "survey_index",
+        "unit": "points",
+        "status": "insufficient_history",
+        "evidence": [
+          "synth-c1"
+        ],
+        "latest_period": "2030-02-28",
+        "latest_value": "25"
+      }
+    ],
+    "rejected": [],
+    "limitation": "Observed change is not a forecast or a business recommendation."
+  },
+  "markdown": "# Synthetic Domain Brief\n\n**Reconstructed Public Demo · not operational data**\n\nAs of: 2030-02-28\n\n## Evidence-backed observations\n\n- {\"item\": \"glassleaf\", \"metric\": \"survey_index\", \"unit\": \"points\"}: compared\n  - Change: 12; percent: 15.00\n  - Evidence: synth-a1, synth-a2\n- {\"item\": \"moonroot\", \"metric\": \"volume_index\", \"unit\": \"points\"}: compared\n  - Change: -4; percent: -10.00\n  - Evidence: synth-b1, synth-b2\n- {\"item\": \"silverstem\", \"metric\": \"survey_index\", \"unit\": \"points\"}: insufficient_history\n  - Evidence: synth-c1\n\n## Opportunity / risk interpretation\n\nAn increase is a candidate for investigation, not a sales decision.\nMissing history, unit differences and conflicting periods remain unresolved.\n\n## Limitations\n\nObserved change is not a forecast or a business recommendation.\nNarration is a template. No LLM, external API, prices or customer records are used."
+}

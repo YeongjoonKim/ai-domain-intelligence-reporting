@@ -1,0 +1,13 @@
+{
+  "origin": "reviewed_operational_derivatives_and_public_execution_captures",
+  "viewport_width": 1100,
+  "files": {
+    "docs/screenshots/inputs.png": "18b2ec26f6be22da3811e0a91a753f99de25aa2ee8254bff0478e45c62837dc9",
+    "docs/screenshots/analysis.png": "d9ce3b2591730dc071497574fb25372676ab939a4fb41af9f7de4fd761333c40",
+    "docs/screenshots/report.png": "f2a0d9cc3acf40f31b823ec2480e14f1b45ebe68af7a7e87321d4aa710f08793",
+    "docs/screenshots/admin-schedule.png": "e6ffa686d1be469ad9c0effee8e75a133ebccbd7c4be994b0ad517956bc8153c",
+    "docs/screenshots/admin-source-review.png": "4fe808b84fdff228a84b9280bce3b9046ad39513f43c335086eecf6af64f2154",
+    "docs/screenshots/admin-report.png": "8f021e4888bf629a760711871228561be29d579fa2b2f852226ecc3a52f63598"
+  },
+  "policy": "Operational admin-* images are owner-approved crop/mask derivatives; other images show the independent synthetic execution. No unredacted originals."
+}
