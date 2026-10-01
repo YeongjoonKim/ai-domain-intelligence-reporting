@@ -1,5 +1,3 @@
-# Design decisions
+# Design Decisions
 
-Validate synthetic origin, dates, identifier shape and finite values before analysis. Use Decimal and separate metric/unit groups. Mark conflicting periods unresolved instead of choosing a convenient row.
-
-Status applies to this public reconstruction, not its private inspiration.
+합성 origin, 날짜, 식별자와 유한 값을 분석 전에 검증합니다. Decimal 산술과 metric/unit별 그룹으로 비교 의미를 보존합니다. 충돌한 기간은 임의 선택하지 않고 unresolved로 남깁니다.
