@@ -1,5 +1,11 @@
 # Changelog — Data Provenance & Human Validation
 
+## 2026-10-02 — Technical portfolio polish
+
+- Data & Workflow Facts와 데이터→분석→검수→리포트 흐름을 상단에 정리했다.
+- 작물보호제·종자 화면을 앞세우고 데이터 규모·중간 산출물·검수 과제의 근거를 유지했다.
+- 세부 예제 수치는 평가 문서로 옮기고 화면 설명을 한국어로 통일했다.
+
 ## 2026-10-02 — Data-to-report evidence expansion
 
 - 40개 관련 테이블의 읽기 전용 행 집계와 source/version/eligibility 차이를 추가했다.
