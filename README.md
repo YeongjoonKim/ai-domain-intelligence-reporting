@@ -10,8 +10,6 @@
 개인화 리포트 파이프라인을 구현했습니다. 데이터 수집, 원문 검토, 정형 분석, LLM 설명,
 HTML 생성, 품질 검토와 예약 발송을 연결하고 두 사업 영역의 빌더를 분리했습니다.
 
-![Reporting architecture](docs/architecture/01_reporting_architecture.svg)
-
 External Sources → Collection → Validation / Normalization → Domain Storage
 → Structured Analysis → LLM Insight → Report → Review / Delivery.
 
@@ -81,6 +79,10 @@ KREI 관측과 재배의향·면적 신호, 가격·반입량, 품종·판매등
 [Harness](https://github.com/YeongjoonKim/reliable-domain-agent-harness)는 해당 데이터를 호출하고 근거로 사용하는 실행 책임을 다룹니다.
 
 ## Public Reference Implementation & Lightweight Demo
+
+아래 기존 도식은 공개 예제와 확장 설계의 구현 범위를 표시합니다.
+
+![Public reporting reference architecture](docs/architecture/01_reporting_architecture.svg)
 
 | 구분 | 범위 |
 |---|---|
