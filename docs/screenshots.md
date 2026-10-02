@@ -19,48 +19,48 @@
 
 ### Seed Report Preview
 
-**Purpose** — 지역·작물별 검토 기회와 근거 부족 상태를 확인합니다.
+**목적** — 지역·작물별 검토 기회와 근거 부족 상태를 확인합니다.
 
 ![Actual seed preview](screenshots/seed-report-preview.png)
 
-**What this demonstrates** — 2026-08-04 저장된 실제 HTML의 리포트 첫 화면. 직원 식별 영역을 마스킹했습니다.
-**Architecture relation** — Analysis → Report → Review.
+**이 화면이 보여주는 것** — 2026-08-04 저장된 실제 HTML의 리포트 첫 화면. 직원 식별 영역을 마스킹했습니다.
+**아키텍처 연결** — Analysis → Report → Review.
 
 ### Seed Market
 
-**Purpose** — 단위와 비교 시점을 유지한 시장 정보를 확인합니다.
+**목적** — 단위와 비교 시점을 유지한 시장 정보를 확인합니다.
 
 ![Actual seed market section](screenshots/seed-report-market.png)
 
-**What this demonstrates** — 2026-07-31 가격 및 전주·전년 비교를 표시한 과거 생성 결과.
-**Architecture relation** — Structured Market Data → Report.
+**이 화면이 보여주는 것** — 2026-07-31 가격 및 전주·전년 비교를 표시한 과거 생성 결과.
+**아키텍처 연결** — Structured Market Data → Report.
 
 ### Seed Calendar
 
-**Purpose** — 생육 달력 데이터를 종자 상담 자료에 연결한 출력 형식을 확인합니다.
+**목적** — 생육 달력 데이터를 종자 상담 자료에 연결한 출력 형식을 확인합니다.
 
 ![Actual seed calendar section](screenshots/seed-report-calendar.png)
 
-**What this demonstrates** — 저장된 리포트의 달력 섹션. 이 과거 화면은 1월 설명을 표시하므로 생성 월의 적시성 검증 자료로 사용하지 않습니다.
-**Architecture relation** — Crop Calendar → Report Section.
+**이 화면이 보여주는 것** — 저장된 리포트의 달력 섹션. 이 과거 화면은 1월 설명을 표시하므로 생성 월의 적시성 검증 자료로 사용하지 않습니다.
+**아키텍처 연결** — Crop Calendar → Report Section.
 
 ### Crop Protection Preview
 
-**Purpose** — 관심 작물·지역과 병해충 정보를 조합한 미리보기를 검토합니다.
+**목적** — 관심 작물·지역과 병해충 정보를 조합한 미리보기를 검토합니다.
 
 ![Actual crop protection preview](screenshots/protection-report-preview.png)
 
-**What this demonstrates** — 2026-07-28 생성된 보고서의 첫 화면. 이름·소속·직급을 마스킹했습니다.
-**Architecture relation** — Pest / Regional Signals → Report.
+**이 화면이 보여주는 것** — 2026-07-28 생성된 보고서의 첫 화면. 이름·소속·직급을 마스킹했습니다.
+**아키텍처 연결** — Pest / Regional Signals → Report.
 
 ### Weather Section
 
-**Purpose** — 지역별 관측과 시간대별 예보의 전달 방식을 확인합니다.
+**목적** — 지역별 관측과 시간대별 예보의 전달 방식을 확인합니다.
 
 ![Actual report weather section](screenshots/protection-report-weather.png)
 
-**What this demonstrates** — 위 과거 리포트의 서울 날씨·시간대별 예보 표.
-**Architecture relation** — Weather Data → Regional Report.
+**이 화면이 보여주는 것** — 위 과거 리포트의 서울 날씨·시간대별 예보 표.
+**아키텍처 연결** — Weather Data → Regional Report.
 
 현재 [데이터 연결 현황](screenshots/seed-source-connections.png)과
 [9월 KREI 검수](screenshots/krei-september-review.png)는 2026-10-02 새 캡처입니다.
