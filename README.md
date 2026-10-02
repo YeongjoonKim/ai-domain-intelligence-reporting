@@ -1,10 +1,18 @@
 # AI Decision Support & Domain Intelligence Reporting
 
-### Multi-source Data · Source Review · LLM Insight · Personalized Reports
+### Data Provenance · Human Validation · Domain Intelligence
 
 [![CI](https://github.com/YeongjoonKim/ai-domain-intelligence-reporting/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/YeongjoonKim/ai-domain-intelligence-reporting/actions/workflows/ci.yml)
 
 ## Actual Engineering Experience
+
+이 저장소는 [Agent Harness](https://github.com/YeongjoonKim/reliable-domain-agent-harness)의
+**Domain Data / Evidence Tool**이 어떤 검토된 자료를 제공해야 하는지 보여주는 supporting project입니다.
+
+`Source Version → Extraction → LLM Refinement → Human Validation → Structured Fact → Report`
+
+추출 후보, LLM 보정문, 검증된 수치, 승인된 report input은 서로 다른 상태입니다.
+자동 수치 검증과 사람의 원문 승인도 구별하며, 공개 합성 예제가 실제 승인 워크플로를 실행한다고 주장하지 않습니다.
 
 공공 관측·시장·기상·병해충·품종 정보를 통합해 **작물보호제와 종자 영업 의사결정**을 지원하는
 개인화 리포트 파이프라인을 구현했습니다. 데이터 수집, 원문 검토, 정형 분석, LLM 설명,
