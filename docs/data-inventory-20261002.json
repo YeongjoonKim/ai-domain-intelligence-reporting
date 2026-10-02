@@ -1,0 +1,456 @@
+{
+  "kind": "read_only_operational_aggregate_observation_not_public_demo_fixture",
+  "measured_at_utc": "2026-10-02T08:12:17.004236+00:00",
+  "count_semantics": "Exact SQL row counts, including historical versions; do not sum into unique source count or per-report usage.",
+  "tables": [
+    {
+      "table": "seed_source_documents",
+      "rows": 82,
+      "count_kind": "exact",
+      "dates": {
+        "collected_at": {
+          "first": "2026-08-04 04:37:08.498370+00:00",
+          "last": "2026-10-01 23:43:19.741171+00:00"
+        },
+        "updated_at": {
+          "first": "2026-08-04 04:40:26.344978+00:00",
+          "last": "2026-10-01 23:43:19.741171+00:00"
+        }
+      }
+    },
+    {
+      "table": "seed_document_pages",
+      "rows": 937,
+      "count_kind": "exact",
+      "dates": {}
+    },
+    {
+      "table": "seed_krei_reports",
+      "rows": 82,
+      "count_kind": "exact",
+      "dates": {
+        "publication_date": {
+          "first": "2026-06-02",
+          "last": "2026-09-02"
+        },
+        "updated_at": {
+          "first": "2026-08-04 04:40:26.344978+00:00",
+          "last": "2026-09-13 12:34:32.421636+00:00"
+        }
+      }
+    },
+    {
+      "table": "seed_krei_crop_texts",
+      "rows": 293,
+      "count_kind": "exact",
+      "dates": {
+        "updated_at": {
+          "first": "2026-08-18 23:55:41.936019+00:00",
+          "last": "2026-10-01 23:43:19.741171+00:00"
+        }
+      }
+    },
+    {
+      "table": "seed_krei_forecast_metrics",
+      "rows": 1526,
+      "count_kind": "exact",
+      "dates": {}
+    },
+    {
+      "table": "at_price_trend",
+      "rows": 76080,
+      "count_kind": "exact",
+      "dates": {
+        "exmn_ymd": {
+          "first": "2026-03-11",
+          "last": "2026-09-30"
+        }
+      }
+    },
+    {
+      "table": "at_price_regional",
+      "rows": 567637,
+      "count_kind": "exact",
+      "dates": {
+        "exmn_ymd": {
+          "first": "2025-12-04",
+          "last": "2026-10-01"
+        }
+      }
+    },
+    {
+      "table": "at_price_monthly",
+      "rows": 3538,
+      "count_kind": "exact",
+      "dates": {}
+    },
+    {
+      "table": "wholesale_auction_daily",
+      "rows": 750767,
+      "count_kind": "exact",
+      "dates": {
+        "trade_date": {
+          "first": "2026-07-27",
+          "last": "2026-09-30"
+        },
+        "collected_at": {
+          "first": "2026-08-26 06:38:34.963882+00:00",
+          "last": "2026-10-01 14:11:54.889862+00:00"
+        },
+        "updated_at": {
+          "first": "2026-08-26 06:38:34.963882+00:00",
+          "last": "2026-10-01 14:11:54.889862+00:00"
+        }
+      }
+    },
+    {
+      "table": "plant_variety_protection",
+      "rows": 1246,
+      "count_kind": "exact",
+      "dates": {}
+    },
+    {
+      "table": "variety_declaration",
+      "rows": 462,
+      "count_kind": "exact",
+      "dates": {}
+    },
+    {
+      "table": "variety_profile",
+      "rows": 913,
+      "count_kind": "exact",
+      "dates": {}
+    },
+    {
+      "table": "seed_supply_area",
+      "rows": 12865,
+      "count_kind": "exact",
+      "dates": {}
+    },
+    {
+      "table": "crop_growth_stage",
+      "rows": 4121,
+      "count_kind": "exact",
+      "dates": {}
+    },
+    {
+      "table": "agri_support_programs",
+      "rows": 360,
+      "count_kind": "exact",
+      "dates": {}
+    },
+    {
+      "table": "seed_agri_weather_stations",
+      "rows": 97,
+      "count_kind": "exact",
+      "dates": {
+        "updated_at": {
+          "first": "2026-10-01 14:10:15.322234+00:00",
+          "last": "2026-10-01 14:10:15.322234+00:00"
+        }
+      }
+    },
+    {
+      "table": "seed_agri_weather_daily",
+      "rows": 8982,
+      "count_kind": "exact",
+      "dates": {
+        "observed_date": {
+          "first": "2021-07-08",
+          "last": "2026-10-01"
+        },
+        "collected_at": {
+          "first": "2026-08-11 01:51:15.101981+00:00",
+          "last": "2026-10-01 14:10:15.322234+00:00"
+        },
+        "updated_at": {
+          "first": "2026-08-11 01:51:15.101981+00:00",
+          "last": "2026-10-01 14:10:15.322234+00:00"
+        }
+      }
+    },
+    {
+      "table": "seed_agri_weather_region_maps",
+      "rows": 101,
+      "count_kind": "exact",
+      "dates": {
+        "updated_at": {
+          "first": "2026-10-01 14:10:15.322234+00:00",
+          "last": "2026-10-01 14:10:15.322234+00:00"
+        }
+      }
+    },
+    {
+      "table": "seed_crop_weather_profiles",
+      "rows": 32,
+      "count_kind": "exact",
+      "dates": {
+        "updated_at": {
+          "first": "2026-08-12 01:14:03.842167+00:00",
+          "last": "2026-08-12 01:14:03.842167+00:00"
+        }
+      }
+    },
+    {
+      "table": "ncpms_bulletin",
+      "rows": 259,
+      "count_kind": "exact",
+      "dates": {}
+    },
+    {
+      "table": "ncpms_bulletin_alert",
+      "rows": 4281,
+      "count_kind": "exact",
+      "dates": {}
+    },
+    {
+      "table": "ncpms_forecast_map",
+      "rows": 9802,
+      "count_kind": "exact",
+      "dates": {}
+    },
+    {
+      "table": "ncam_pest_forecast_daily",
+      "rows": 39269,
+      "count_kind": "exact",
+      "dates": {
+        "forecast_date": {
+          "first": "2026-07-27",
+          "last": "2026-10-08"
+        }
+      }
+    },
+    {
+      "table": "ncpms_desease",
+      "rows": 2876,
+      "count_kind": "exact",
+      "dates": {}
+    },
+    {
+      "table": "ncpms_desease_detail",
+      "rows": 957,
+      "count_kind": "exact",
+      "dates": {}
+    },
+    {
+      "table": "ncpms_pest",
+      "rows": 1838,
+      "count_kind": "exact",
+      "dates": {}
+    },
+    {
+      "table": "ncpms_pest_detail",
+      "rows": 611,
+      "count_kind": "exact",
+      "dates": {}
+    },
+    {
+      "table": "pesticide_info",
+      "rows": 134750,
+      "count_kind": "exact",
+      "dates": {}
+    },
+    {
+      "table": "ncpms_consult_detail",
+      "rows": 5011,
+      "count_kind": "exact",
+      "dates": {}
+    },
+    {
+      "table": "nongsaro_consulting",
+      "rows": 1906,
+      "count_kind": "exact",
+      "dates": {
+        "consulted_date": {
+          "first": "2011-08-07",
+          "last": "2026-09-08"
+        }
+      }
+    },
+    {
+      "table": "nsr_spt_tchnlgy_sport_view",
+      "rows": 1287,
+      "count_kind": "exact",
+      "dates": {}
+    },
+    {
+      "table": "nsr_week_farm_info",
+      "rows": 873,
+      "count_kind": "exact",
+      "dates": {}
+    },
+    {
+      "table": "nsr_farm_work_dtl",
+      "rows": 176,
+      "count_kind": "exact",
+      "dates": {}
+    },
+    {
+      "table": "agri_community_posts",
+      "rows": 4279,
+      "count_kind": "exact",
+      "dates": {}
+    },
+    {
+      "table": "agri_community_comments",
+      "rows": 5889,
+      "count_kind": "exact",
+      "dates": {}
+    },
+    {
+      "table": "agri_field_signal_daily_stats",
+      "rows": 640,
+      "count_kind": "exact",
+      "dates": {
+        "signal_date": {
+          "first": "2026-01-03",
+          "last": "2026-09-30"
+        }
+      }
+    },
+    {
+      "table": "seed_agency_news",
+      "rows": 85,
+      "count_kind": "exact",
+      "dates": {}
+    },
+    {
+      "table": "crop_cultivation_stats",
+      "rows": 12475,
+      "count_kind": "exact",
+      "dates": {}
+    },
+    {
+      "table": "seed_procurement_bids",
+      "rows": 177,
+      "count_kind": "exact",
+      "dates": {}
+    },
+    {
+      "table": "seed_market_signal_snapshots",
+      "rows": 17,
+      "count_kind": "exact",
+      "dates": {
+        "updated_at": {
+          "first": "2026-08-26 23:24:14.468484+00:00",
+          "last": "2026-09-09 05:11:05.373899+00:00"
+        }
+      }
+    }
+  ],
+  "krei_content_identity": {
+    "current_documents": 21,
+    "distinct_content_hashes": 21
+  },
+  "krei_eligibility_funnel": {
+    "all_metrics": 1526,
+    "status_eligible": 682,
+    "current_metrics": 404,
+    "report_eligible": 0
+  },
+  "krei_report_review_states": [
+    {
+      "review_status": "AUTO_PARSED",
+      "is_current": false,
+      "rows": 40
+    },
+    {
+      "review_status": "REVIEW_REQUIRED",
+      "is_current": true,
+      "rows": 21
+    },
+    {
+      "review_status": "REVIEW_REQUIRED",
+      "is_current": false,
+      "rows": 13
+    },
+    {
+      "review_status": "APPROVED",
+      "is_current": false,
+      "rows": 8
+    }
+  ],
+  "retrieval_probe": {
+    "measured_at": "2026-10-02T08:12:17.875772+00:00",
+    "crops": [
+      "벼",
+      "수박",
+      "참외",
+      "양파",
+      "무"
+    ],
+    "regions": [
+      "경북",
+      "전남",
+      "강원",
+      "제주",
+      "경남",
+      "전북"
+    ],
+    "scope": "actual retrieval functions only; not a newly generated report or LLM usage count",
+    "results": {
+      "krei_metrics": {
+        "selected_items": 0,
+        "output_type": "list",
+        "latency_ms": 2.46
+      },
+      "krei_outlooks": {
+        "selected_items": 3,
+        "output_type": "list",
+        "latency_ms": 23.43
+      },
+      "prices": {
+        "selected_items": 5,
+        "output_type": "dict",
+        "crops_with_data": 5,
+        "latency_ms": 127.61
+      },
+      "auction_crop_signals": {
+        "selected_items": 4,
+        "output_type": "dict",
+        "latency_ms": 518.11
+      },
+      "variety_protection": {
+        "selected_items": 25,
+        "output_type": "list",
+        "latency_ms": 10.22
+      },
+      "sales_declarations": {
+        "selected_items": 18,
+        "output_type": "list",
+        "latency_ms": 17.05
+      },
+      "cultivation": {
+        "selected_items": 105,
+        "output_type": "list",
+        "latency_ms": 4.49
+      },
+      "agri_weather": {
+        "selected_items": 30,
+        "output_type": "list",
+        "latency_ms": 983.31
+      },
+      "pest_forecasts": {
+        "selected_items": 0,
+        "output_type": "list",
+        "latency_ms": 11.51
+      },
+      "protection_ncam": {
+        "regions": [
+          "경북",
+          "전남",
+          "강원"
+        ],
+        "groups": 18,
+        "selected_rows": 249,
+        "priority_items": 16
+      }
+    },
+    "weather_coverage": {
+      "signal_groups": 30,
+      "gdd_available": 18,
+      "approved_profile_missing": 12,
+      "low_confidence_below_065": 5
+    }
+  }
+}
