@@ -13,7 +13,10 @@
     "docs/screenshots/seed-report-calendar.png": "f3866a18db96c91611fc6b89a8e854602c6b9ae0b9697dff6a81df5920349f43",
     "docs/screenshots/seed-report-market.png": "556bdb2913497e83cc5549e293e3f5deed5be613d5cf8fa6fc7fd6abbc2972b6",
     "docs/screenshots/seed-report-preview.png": "011893bba9c2a17c948f1df79d2b2c165f455bb6b2e9b8c39b0a770cc33f5460",
-    "docs/screenshots/seed-source-connections.png": "dab48271234f046a4d7640d8758921ba8cfc741e952b9513d1e202042c879470"
+    "docs/screenshots/seed-source-connections.png": "dab48271234f046a4d7640d8758921ba8cfc741e952b9513d1e202042c879470",
+    "docs/screenshots/seed-insight-opening.png": "1343aade63569c658b201ac6be8c4589f4de0cf627c77f101c21873ee46c38c4",
+    "docs/screenshots/protection-forecast-regions.png": "c6402607a70dc9842179be19951761b49c57d17c29c9b9c07a2494a776882f4d",
+    "docs/screenshots/seed-growing-degree-days.png": "5451c308ea5eb1aa4d1b79ccbc53abc22faaa69efe7a1d7e2ccf0afa6fa5d679"
   },
   "policy": "Owner-approved local opaque masking/crops. Actual engineering captures are separate from public synthetic examples. Originals preserved privately."
 }

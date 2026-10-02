@@ -1,5 +1,13 @@
 # Changelog — Data Provenance & Human Validation
 
+## 2026-10-02 — Data-to-report evidence expansion
+
+- 40개 관련 테이블의 읽기 전용 행 집계와 source/version/eligibility 차이를 추가했다.
+- 실제 조회 함수의 선택량, 전처리·중간 산출물·품질/발송 경계를 단계별로 연결했다.
+- 예보 날짜/지역, 적산온도, 저장된 종자 인사이트 첫 부분의 비식별 화면 3개를 추가했다.
+- KREI current 검수 gate, 제목 계약 불일치, 기존 회귀 2건 실패를 후속 과제로 명시했다.
+- 공개 집계 계약 테스트 3개를 추가했다. 운영 생성/승인/발송 로직은 변경하지 않았다.
+
 ## 2026-10-02 — Portfolio hardening
 
 - Source Version → Extraction → LLM Refinement → Human Validation → Structured Fact → Report 관계를 명시하고 supporting evidence project로 역할을 정리했다.

@@ -1,5 +1,20 @@
 # Reporting Evidence Gallery
 
+## Added: Forecast, Degree Days and Insight
+
+| Image | Data / capture provenance | Boundary |
+|---|---|---|
+| [지역·날짜별 병해충 예보](screenshots/protection-forecast-regions.png) | 2026-10-02 읽기 전용 NCAM 조회 166행, 경북·전남, 기존 섹션 렌더러 | 새 전체 보고서 생성/발송 아님; 11일 표시 창의 미적재 날짜 유지 |
+| [일사량·적산온도](screenshots/seed-growing-degree-days.png) | 같은 날짜의 무·벼·양파 × 경북·전남 6개 신호, 기존 섹션 렌더러 | 승인 profile 없는 GDD는 미표시; 보조 환경 신호 |
+| [종자 인사이트 첫 부분](screenshots/seed-insight-opening.png) | 2026-09-02 저장 HTML의 기존 브리핑 상단만 발췌 | 과거 생성문, 현재 DB/새 LLM 출력과 구분 |
+
+회사명·직원 이름·이메일이 없는 섹션만 선택했습니다. 원문은 보존하고 픽셀 사본은 metadata 없이
+평탄화했습니다. 예보/적산온도는 화면 안에도 섹션 재렌더링임을 명시했습니다.
+계정 로그인·운영 상태 변경·새 LLM 호출·발송 없이 격리된 브라우저로 확인했고 JS 오류는 없었습니다.
+적산온도 캡처는 수치·신뢰도 부분이며 지도/chart 이미지 전체를 캡처한 것은 아닙니다.
+
+[데이터 규모와 단계별 처리](data-to-report.md)에서 저장량·선택량·최종 사용량의 차이를 설명합니다.
+
 ## Actual reports & source management
 
 ### Seed Report Preview

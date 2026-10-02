@@ -2,6 +2,10 @@
 
 Status: PUBLICATION APPROVED for this independent evidence package.
 
+2026-10-02 추가 범위: 공개 데이터 테이블별 집계(원문 행 제외), 실제 조회의 선택량,
+기존 섹션 렌더러의 예보/적산온도 캡처와 저장된 종자 브리핑의 비식별 발췌.
+운영 관측 집계 JSON은 공개 합성 데모의 입력 fixture가 아니며 운영 DB 접속을 제공하지 않는다.
+
 | Layer | Repository-specific scope |
 |---|---|
 | Actual Engineering Experience | 공공 관측·시장·병해충·품종 데이터 연계, KREI 추출/보정/검수 화면과 작물보호제·종자 리포트의 비식별 증거. |

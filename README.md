@@ -21,6 +21,29 @@ HTML 생성, 품질 검토와 예약 발송을 연결하고 두 사업 영역의
 External Sources → Collection → Validation / Normalization → Domain Storage
 → Structured Analysis → LLM Insight → Report → Review / Delivery.
 
+## Data Scale → Selection → Report
+
+2026-10-02 읽기 전용 집계로 실제 보유량과 보고서 선택량을 확인했습니다.
+
+| 데이터 | 적재량 / 해석 |
+|---|---|
+| KREI | 문서 버전 82행, 고유 content hash 21개 · 페이지 937 · 지표 후보 1,526 |
+| 시장 | 전국 가격 76,080 · 지역 가격 567,637 · 경매 750,767행 |
+| 기상 | 관측소 97 · 일 관측 8,982행 · 지역/작물 매핑 101 |
+| 병해충 | 공식 회보 259 · 회보 항목 4,281 · 지역 일별 예보 39,269행 |
+| 등록·통계 | 약제 등록 134,750 · 품종보호 1,246 · 판매신고 462 · 재배 통계 12,475행 |
+
+이는 **전체 저장 행 수**이며 리포트 한 건의 사용량이나 중복 없는 총 데이터 수가 아닙니다.
+실제 5작물·6지역 조회에서는 가격 5작물, 경매 신호 4작물, 재배 통계 105행,
+농업기상 30개 작물×지역 신호를 선택했습니다. 새 리포트 생성이나 LLM 사용량 측정은 아닙니다.
+
+**확인한 병목:** KREI 지표 1,526건 중 자체 상태를 통과하는 것은 682건이지만,
+현재 보고서 버전·검수 조건까지 적용하면 정형 입력은 **0건**입니다.
+원문 정성 전망 fallback과 승인된 정형 수치를 구분하고 이 검수 흐름을 후속 과제로 남겼습니다.
+
+[전체 소스별 규모·전처리·중간 산출물·실제 선택량](docs/data-to-report.md) ·
+[검토 가능한 집계 JSON](docs/data-inventory-20261002.json).
+
 ## Use Case A — Crop Protection Intelligence
 
 지역·관심 작물을 기준으로 공식 병해충 정보, 기상, 시장·현장 신호를 조합합니다.
@@ -32,6 +55,14 @@ External Sources → Collection → Validation / Normalization → Domain Storag
 
 **What this demonstrates** — 실제 작물보호제 리포트 미리보기. 직원 이름·이메일·소속은 불투명 마스킹했습니다.
 **Architecture relation** — Domain analysis → Generated Report → Human Review.
+
+### Regional Forecast Dates
+
+![병해충 예측 대상일과 경북·전남 지역별 신호](docs/screenshots/protection-forecast-regions.png)
+
+2026-10-02 **현재 DB + 기존 리포트 섹션 렌더러**로 경북·전남 166행을 날짜별로 표시했습니다.
+9월 29일~10월 9일의 창을 보존하며 미적재 날짜도 숨기지 않습니다.
+예보는 확정 발생률이 아닙니다. 이 캡처는 새 전체 보고서 생성·발송 결과가 아닌 섹션 검증입니다.
 
 ## Use Case B — Seed Sales Intelligence
 
@@ -47,6 +78,19 @@ KREI 관측과 재배의향·면적 신호, 가격·반입량, 품종·판매등
 **Architecture relation** — Structured Market Data → Seed Report.
 
 시장·가격과 전체 미리보기는 [추가 Report Evidence](docs/screenshots.md)에 있습니다.
+
+### Insight Opening & Growing Degree Days
+
+![저장된 종자 리포트의 핵심 브리핑 첫 부분](docs/screenshots/seed-insight-opening.png)
+
+2026-09-02 저장본의 실제 첫 브리핑을 발췌했습니다. 작물별 수요 방향·준비 시점·시장·품종 신호와
+근거 제한을 함께 보여줍니다. 현재 DB로 새로 생성한 인사이트가 아닙니다.
+
+![현재 관측으로 렌더링한 지역별 일사량·적산온도](docs/screenshots/seed-growing-degree-days.png)
+
+적산온도 화면은 2026-10-02 DB 조회와 기존 섹션 렌더러를 사용했습니다.
+동일 관측소의 최근 28일과 과거 동기간을 비교하고, profile 부재·관측 신뢰도도 표시합니다.
+환경 진행의 보조 신호이며 파종·주문일을 확정하는 예측 모델 성능은 아닙니다.
 
 ## Data Integration & Source Validation
 
@@ -100,7 +144,8 @@ KREI 관측과 재배의향·면적 신호, 가격·반입량, 품종·판매등
 
 공개 예제는 fixture의 +12 points / +15% 등을 재계산하고 기간 충돌·이력 부족을 보존합니다.
 [실행 artifact](examples/execution.json) · [공개 실행 화면](docs/screenshots.md#public-execution).
-22개 테스트가 값·단위·날짜·충돌·projection·snapshot을 검증합니다.
+25개 공개 테스트가 값·단위·날짜·충돌·projection·snapshot과 추가 집계의 공개 계약을 검증합니다.
+별도 private reporting 회귀는 243 통과·2 실패였으며 [미해결 계약과 검수 문제](docs/data-to-report.md#6-validation-findings-not-hidden-success-claims)를 공개 테스트 결과와 구분합니다.
 
 ## Reproduce
 
