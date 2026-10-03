@@ -4,7 +4,7 @@
 
 [![CI](https://github.com/YeongjoonKim/ai-domain-intelligence-reporting/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/YeongjoonKim/ai-domain-intelligence-reporting/actions/workflows/ci.yml)
 
-## 실제 구현 경험
+## 실제 구현
 
 공공 관측·시장·기상·병해충·품종 정보를 통합해 **작물보호제와 종자 영업 의사결정**을 지원하는
 개인화 리포트 파이프라인을 구현했습니다. 데이터 수집, 원문 검토, 정형 분석, LLM 설명,
