@@ -1,14 +1,31 @@
-flowchart TD
-  n0_0["Synthetic observations · IMPLEMENTED"]
-  n1_0["Validate / normalize · IMPLEMENTED"]
-  n2_0["Separate units / dates · IMPLEMENTED"]
-  n3_0["Analyze changes · IMPLEMENTED"]
-  n4_0["Narration seam · PARTIAL"]
-  n5_0["Investigate opportunity / risk · PROPOSED"]
-  n6_0["Cited report · IMPLEMENTED"]
-  n0_0 --> n1_0
-  n1_0 --> n2_0
-  n2_0 --> n3_0
-  n3_0 --> n4_0
-  n4_0 --> n5_0
-  n5_0 --> n6_0
+flowchart TB
+  subgraph lane0["ACQUIRE AND PREPARE"]
+    direction LR
+    n0_0["Scheduled / manual batch<br/>Allowlisted host execution<br/>Per-stage status / retry"]
+    n0_1["Public source data<br/>Documents / time series<br/>Official registration rows"]
+    n0_2["Normalize + preserve<br/>Units / dates / versions<br/>Document / page evidence"]
+    n0_3["KREI review<br/>PDF / OCR / correction<br/>Human review and hashes"]
+    n0_0 --> n0_1
+    n0_1 --> n0_2
+    n0_2 --> n0_3
+  end
+  subgraph lane1["GENERATE AND DELIVER"]
+    direction LR
+    n1_0["Select eligible inputs<br/>Structured metric gates<br/>Separate text selection"]
+    n1_1["Two report builders<br/>Protection / seed domains<br/>Region / crop selection"]
+    n1_2["Analysis + LLM editing<br/>Deterministic calculations<br/>Evidence-backed sections"]
+    n1_3["Report / review / send<br/>HTML / text / seed PDF<br/>Quality / approval / schedule"]
+    n1_0 --> n1_1
+    n1_1 --> n1_2
+    n1_2 --> n1_3
+  end
+  subgraph lane2["PUBLIC EXECUTABLE EXAMPLE"]
+    direction LR
+    n2_0["Synthetic observations<br/>Fictional data sources<br/>Explicit as-of and units"]
+    n2_1["Validate and compare<br/>Decimal arithmetic<br/>Period / unit contracts"]
+    n2_2["Cite the evidence<br/>Source IDs and values<br/>Separate observed / projected"]
+    n2_3["Render artifacts<br/>Markdown and HTML<br/>Snapshot / contract tests"]
+    n2_0 --> n2_1
+    n2_1 --> n2_2
+    n2_2 --> n2_3
+  end

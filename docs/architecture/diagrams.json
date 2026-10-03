@@ -1,0 +1,112 @@
+[
+  {
+    "file": "01_reporting_architecture",
+    "title": "Domain intelligence: source to delivery",
+    "scope": "Implemented reporting workflow and independent public example",
+    "lanes": [
+      {
+        "title": "ACQUIRE AND PREPARE",
+        "nodes": [
+          {
+            "title": "Scheduled / manual batch",
+            "lines": [
+              "Allowlisted host execution",
+              "Per-stage status / retry"
+            ]
+          },
+          {
+            "title": "Public source data",
+            "lines": [
+              "Documents / time series",
+              "Official registration rows"
+            ]
+          },
+          {
+            "title": "Normalize + preserve",
+            "lines": [
+              "Units / dates / versions",
+              "Document / page evidence"
+            ]
+          },
+          {
+            "title": "KREI review",
+            "lines": [
+              "PDF / OCR / correction",
+              "Human review and hashes"
+            ]
+          }
+        ],
+        "serial": true
+      },
+      {
+        "title": "GENERATE AND DELIVER",
+        "nodes": [
+          {
+            "title": "Select eligible inputs",
+            "lines": [
+              "Structured metric gates",
+              "Separate text selection"
+            ]
+          },
+          {
+            "title": "Two report builders",
+            "lines": [
+              "Protection / seed domains",
+              "Region / crop selection"
+            ]
+          },
+          {
+            "title": "Analysis + LLM editing",
+            "lines": [
+              "Deterministic calculations",
+              "Evidence-backed sections"
+            ]
+          },
+          {
+            "title": "Report / review / send",
+            "lines": [
+              "HTML / text / seed PDF",
+              "Quality / approval / schedule"
+            ]
+          }
+        ],
+        "serial": true
+      },
+      {
+        "title": "PUBLIC EXECUTABLE EXAMPLE",
+        "nodes": [
+          {
+            "title": "Synthetic observations",
+            "lines": [
+              "Fictional data sources",
+              "Explicit as-of and units"
+            ]
+          },
+          {
+            "title": "Validate and compare",
+            "lines": [
+              "Decimal arithmetic",
+              "Period / unit contracts"
+            ]
+          },
+          {
+            "title": "Cite the evidence",
+            "lines": [
+              "Source IDs and values",
+              "Separate observed / projected"
+            ]
+          },
+          {
+            "title": "Render artifacts",
+            "lines": [
+              "Markdown and HTML",
+              "Snapshot / contract tests"
+            ]
+          }
+        ],
+        "serial": true
+      }
+    ],
+    "note": "Stored volume, eligible inputs and delivered reports are different measures; each stage retains its own status."
+  }
+]
