@@ -49,11 +49,41 @@ KREI 원문 수집 성공은 10-02이지만 현재 자료의 최대 publication_
   → current report + permitted report status + permitted metric status: 0
 ```
 
-현재 current 보고서 21개가 모두 `REVIEW_REQUIRED`입니다. 정형 조회는 상위 보고서 상태도
-검사하므로 검증 지표가 저장돼 있어도 선택되지 않습니다. 검수·버전 전환 운영을 점검할
-후속 과제이며, 이번 공개 작업에서 승인 상태를 자동으로 바꾸거나 gate를 완화하지 않았습니다.
-정성 전망은 별도의 페이지 원문 fallback을 사용하므로 정형 지표 0건과 같지 않습니다.
-원문 fallback은 승인된 정형 수치나 관리자 승인문으로 승격하지 않습니다.
+2026-10-02 집계에서 current 보고서 21개가 모두 `REVIEW_REQUIRED`였습니다.
+정형 조회는 상위 보고서 상태도 검사하므로 해당 자료는 정형 입력에서 제외됐습니다.
+이는 승인 정책이 적용된 결과이며 KREI 미활용이나 수집·리포트 파이프라인 장애를 뜻하지 않습니다.
+
+2026-10-03 코드 재검토 기준 선택 경로는 다음과 같습니다. 집계 숫자는 위 관측 시점 그대로입니다.
+
+| 경로 | 선택 조건 | 리포트 입력 |
+|---|---|---|
+| `_fetch_krei` 정형 지표 | current 보고서가 AUTO_PARSED / REVIEWED / APPROVED, 지표가 AUTO_VALIDATED / APPROVED | 작물별 최신 보고서의 적격 수치 |
+| `_fetch_krei_outlooks` 승인 작물 텍스트 | 동일 상위 보고서 조건, 작물 텍스트 APPROVED, 저장된 승인 hash가 있으면 일치 검사 | 관리자 편집문→COMPLETED LLM 보정문→원문 순서 |
+| 미승인 작물 텍스트 | 상위 보고서 조건 충족, EXCLUDED가 아님 | raw_text만 사용, RAW_PENDING_REVIEW로 표시 |
+| PAGE_FALLBACK | 적합한 작물 텍스트 없음; current·PARSED 문서, 품질 0.45 이상·작물 일치 페이지 | 페이지 추출문과 같은 보고서·작물의 REJECTED 아닌 지표 corrected_text |
+
+PAGE_FALLBACK은 상위 보고서 review_status로 제한하지 않으며, 미승인 `llm_refined_text`를
+가져오는 경로도 아닙니다. 지표 교정문에는 `[관리자 교정]` 표시가 붙지만 수치 승인과는 별개입니다.
+페이지는 최신 보고서에서 최대 3개를 결합하고, 작물별 출처 상태를 함께 전달합니다.
+
+`build_report`는 이 전망 묶음의 `source_text`·`text_source`와 적격 지표를
+`_krei_metric_editorial`에 전달해 LLM이 섹션을 정리하게 합니다.
+**승인된 LLM 보정문도 조건을 충족하면 실제 생성 입력에 쓰이며, 미승인 보정문은 자동 채택하지 않습니다.**
+
+### 관리자 승인과 정형 사실의 구분
+
+1. 작물 텍스트 review API는 APPROVED·EXCLUDED를 기록하고 승인 텍스트 hash를 저장합니다.
+   편집·재추출·보정으로 텍스트가 바뀌면 재검수 상태로 돌아갑니다.
+2. 보고서 approve API는 모든 작물 텍스트가 APPROVED 또는 EXCLUDED이고 최소 하나가
+   승인됐는지 검사한 뒤 상위 보고서를 APPROVED로 바꿉니다.
+3. 지표 PATCH API는 수치·범위·단위를 검사해 해당 지표를 APPROVED로 바꿉니다.
+   TEXT_ONLY는 교정문만 저장하며 수치 승인으로 바꾸지 않습니다.
+4. 최종 정형 선택에는 보고서와 지표의 적격 조건이 모두 필요합니다.
+   텍스트·보고서 승인만으로 문장에서 새 수치를 추출·승격하거나 모든 지표를 승인하지 않습니다.
+
+근거 코드는 비공개 시스템의 `seed_weekly/report_builder.py` 내 `_fetch_krei`·`_fetch_krei_outlooks`·`build_report`,
+`krei_crop_text.py` 내 `report_ready_crop_text`, `admin_seed_sales.py`의 텍스트·보고서·지표 검수 API입니다.
+이번 작업에서는 DB 상태나 승인 정책을 변경하지 않았습니다.
 
 ## 3. Pipeline and intermediate artifacts
 
@@ -115,6 +145,7 @@ KREI 원문 수집 성공은 10-02이지만 현재 자료의 최대 publication_
 
 추가로 실제 한글화 함수가 바꾼 두 섹션 제목을 품질 gate가 옛 문자열로 검사하는 불일치를
 재현했습니다. 표시문구가 아니라 안정적인 section ID로 검사하는 방향이 필요합니다.
-KREI 검수 흐름, 이 제목 계약, run별 근거 사용 manifest, 독립 보고서 품질 평가가 남아 있습니다.
+이 제목 계약, run별 근거 사용 manifest, 독립 보고서 품질 평가가 남아 있습니다.
+KREI 승인 대기에 따른 정형 선택 제외는 위 구현 문제와 구분하는 데이터 운영 정책입니다.
 저장된 인사이트의 좁은 표에서는 일부 한글이 겹치는 표시 문제도 보여 반응형 표 검증이 필요합니다.
 이번 공개 문서·화면 보완에서 운영 승인·수집·발송 로직은 변경하지 않았습니다.

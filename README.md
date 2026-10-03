@@ -10,15 +10,15 @@
 개인화 리포트 파이프라인을 구현했습니다. 데이터 수집, 원문 검토, 정형 분석, LLM 설명,
 HTML 생성, 품질 검토와 예약 발송을 연결하고 두 사업 영역의 빌더를 분리했습니다.
 
-이 저장소는 [Agent Harness](https://github.com/YeongjoonKim/reliable-domain-agent-harness)의
-**Domain Data와 Evidence Pipeline**을 보여주는 보조 Technical Showcase입니다.
+[Agent Harness](https://github.com/YeongjoonKim/reliable-domain-agent-harness)가 활용하는
+도메인 데이터와 Evidence Pipeline의 설계·운영 경험을 정리합니다.
 
 ## 데이터에서 리포트까지
 
 ```text
-External Sources → Collection → Validation → Normalization
-                                                 ↓
-Report / Delivery ← Human Review ← LLM Insight ← Structured Analysis
+Source → Collection → Extraction / Normalization → Structured Analysis
+                                                            ↓
+Report / Delivery ← Human Review ← LLM Assistance + Source Evidence
 ```
 
 원천 자료의 버전·출처·단위·기간을 유지하면서 정형 계산과 LLM 해석을 분리합니다.
@@ -31,7 +31,7 @@ Report / Delivery ← Human Review ← LLM Insight ← Structured Analysis
 | Business Domains | 작물보호제의 지역·병해충 대응, 종자의 수요·시장·품종 분석 |
 | Data Sources | KREI·aT·도매경매·국립종자원·공식 재배 통계·기상·병해충 예보·전문가 상담 |
 | Pipeline | 수집→검증·정규화→구조화 분석→LLM 인사이트→사람 검토→리포트 |
-| KREI Processing | PDF/OCR→작물별 원문→Qwen 보정→관리자 검수→리포트 입력 |
+| KREI Processing | PDF/OCR·Qwen 보정·관리자 검수; 정형 지표와 정성 전망의 입력 경로 분리 |
 | Source Validation | 문서 hash·current version·페이지 근거·검수 상태·승인 텍스트 hash |
 | Report Builders | 작물보호제와 종자별 독립 builder, 지역·관심 작물에 따른 데이터 선택 |
 | AI Role | 섹션별 근거 요약·편집과 종합 브리핑; 수치 계산은 정형 처리 |
@@ -46,18 +46,15 @@ Report / Delivery ← Human Review ← LLM Insight ← Structured Analysis
 지역·관심 작물을 기준으로 공식 병해충 정보, 기상, 시장·현장 신호를 조합합니다.
 섹션별 LLM 정리와 종합 인사이트, 품질 검사, 발송 전 미리보기를 연결했습니다.
 
-**목적** — 지역·작물 맥락에 맞춰 병해충 대응과 영업 검토 항목을 정리합니다.
-
 ![작물보호제 리포트 미리보기](docs/screenshots/protection-report-preview.png)
 
-**이 화면이 보여주는 것** — 병해충·기상·현장 신호를 조합한 작물보호제 리포트 미리보기.
-**아키텍처 연결** — Domain Analysis → Report Preview → Human Review.
+병해충·기상·현장 신호를 조합한 미리보기에서 지역별 대응과 영업 검토 항목을 살펴봅니다.
 
 ### 지역·날짜별 병해충 예보
 
 ![병해충 예측 대상일과 경북·전남 지역별 신호](docs/screenshots/protection-forecast-regions.png)
 
-**이 화면이 보여주는 것** — 경북·전남의 작물별 예측 신호를 날짜별로 비교하고 자료가 없는 날을 구분합니다.
+경북·전남의 작물별 예측 신호를 날짜별로 비교하고 자료가 없는 날을 구분합니다.
 DB 조회 결과를 기존 리포트 섹션 렌더러에 연결한 화면입니다.
 
 ## 종자 리포트
@@ -65,12 +62,9 @@ DB 조회 결과를 기존 리포트 섹션 렌더러에 연결한 화면입니�
 KREI 관측과 재배의향·면적 신호, 가격·반입량, 품종·판매등록, 파종·육묘·정식 일정을
 종자 수요 맥락으로 정리합니다. 종자 공급량과 재배면적은 서로 다른 지표로 취급합니다.
 
-**목적** — 원천 관측을 종자 수요·영업 검토 항목으로 전달합니다.
-
 ![종자 리포트 미리보기](docs/screenshots/seed-report-preview.png)
 
-**이 화면이 보여주는 것** — 지역·작물별 영업 검토 항목과 근거 충족 상태를 함께 표시하는 종자 리포트 화면.
-**아키텍처 연결** — Structured Market Data → Seed Report.
+지역·작물별 영업 검토 항목과 근거 충족 상태를 함께 표시합니다.
 
 시장·가격과 전체 미리보기는 [화면 갤러리](docs/screenshots.md)에 있습니다.
 
@@ -78,11 +72,11 @@ KREI 관측과 재배의향·면적 신호, 가격·반입량, 품종·판매등
 
 ![저장된 종자 리포트의 핵심 브리핑 첫 부분](docs/screenshots/seed-insight-opening.png)
 
-**이 화면이 보여주는 것** — 저장된 보고서의 첫 브리핑. 작물별 수요 방향·준비 시점·시장·품종 신호와 근거 수준을 함께 제시합니다.
+저장된 보고서의 첫 브리핑입니다. 작물별 수요 방향·준비 시점·시장·품종 신호와 근거 수준을 함께 제시합니다.
 
 ![지역별 일사량·적산온도](docs/screenshots/seed-growing-degree-days.png)
 
-**이 화면이 보여주는 것** — DB 조회 결과를 기존 섹션 렌더러에 연결한 일사량·적산온도 비교.
+DB 조회 결과를 기존 섹션 렌더러에 연결한 일사량·적산온도 비교입니다.
 동일 관측소의 최근 28일과 과거 동기간을 비교하고 profile 적용 여부·관측 신뢰도를 표시합니다.
 파종·육묘 준비를 검토하는 환경 보조 지표로 사용합니다.
 
@@ -105,13 +99,10 @@ KREI 관측과 재배의향·면적 신호, 가격·반입량, 품종·판매등
 
 ## 데이터 연결과 검수
 
-**목적** — 소스별 연결·적재 현황과 최신 시점, 검수 경로를 확인합니다.
-
 ![데이터 소스 연결과 적재 현황](docs/screenshots/seed-source-connections.png)
 
-**이 화면이 보여주는 것** — KREI·주간농사정보·기상·도매가격·경매의 연결 상태와 적재 현황.
+KREI·주간농사정보·기상·도매가격·경매의 연결 상태와 적재 현황입니다.
 비활성 데이터 소스도 연결 상태와 함께 구분해 표시합니다.
-**아키텍처 연결** — Sources → Collection → Source Health / Normalization.
 
 전체 소스 분류와 테이블 역할은 [구현 근거](docs/actual-engineering.md)에 정리했습니다.
 
@@ -119,16 +110,16 @@ KREI 관측과 재배의향·면적 신호, 가격·반입량, 품종·판매등
 
 `Data Acquisition → PDF / OCR → LLM Refinement → Human Validation → Report Input`
 
-**목적** — PDF/OCR 추출본, Qwen 보정본, 관리자 최종본을 비교합니다.
-
 ![KREI 9월호 원문·보정문·최종본 검수](docs/screenshots/krei-september-review.png)
 
-**이 화면이 보여주는 것** — 9월호 작물별 텍스트·근거 페이지와 검수 상태(REVIEW_REQUIRED).
-원문·보정문·최종본을 비교하며 승인된 리포트 입력 데이터를 관리합니다.
-**아키텍처 연결** — Extraction → LLM Refinement → Human Validation → Report Input.
+9월호의 작물별 원문·Qwen 보정문·관리자 최종본과 근거 페이지를 비교하는 검수 화면입니다.
 
-문서 버전과 상위 검수 상태, 수치의 AUTO_VALIDATED / APPROVED 상태를 함께 검사합니다.
-추출 후보·LLM 보정문·승인 텍스트를 구분하고 승인 후 원문 변경을 hash로 감지합니다.
+KREI 정형 지표는 current 보고서의 검수 상태와 지표의 AUTO_VALIDATED / APPROVED 상태를
+함께 검사합니다. REVIEW_REQUIRED 보고서는 이 정형 사실 경로에서 제외합니다.
+정성 전망은 별도 경로로 원문 또는 승인된 편집·LLM 보정문을 사용하며,
+조건을 충족하는 작물 텍스트가 없으면 페이지 추출문과 지표 교정문으로 보완합니다.
+미승인 LLM 보정문을 자동 채택하거나 정성 문장을 정형 수치로 승격하지 않습니다.
+[텍스트 선택 순서와 승인 경로](docs/data-to-report.md#2-storage-is-not-report-eligibility)를 구분해 설명합니다.
 
 ## 시스템 설계의 강점
 
@@ -171,7 +162,7 @@ python3 scripts/check_repository.py
 ## 현재 범위와 한계
 
 공개 코드는 합성 입력의 정형 비교·근거 연결·렌더링을 재현하며, 운영 파이프라인은 문서와 화면으로 설명합니다.
-최근 조회에서 KREI 정형 입력이 검수 gate로 0건인 병목과 제목·품질 검사 계약 불일치를 확인해 후속 과제로 정리했습니다.
+제목 한글화와 품질 검사 간 계약 불일치, 실행별 근거 사용량 추적과 독립 보고서 품질 평가가 후속 과제입니다.
 Staged delivery는 구현 근거와 운영 실적을 구분하고, 내부 품질 점수는 전문가 정확도·사업 효과와 별도로 평가합니다.
 [미해결 항목과 회귀 결과](docs/data-to-report.md#6-validation-findings-not-hidden-success-claims)를 공개 테스트와 함께 관리합니다.
 
