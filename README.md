@@ -41,6 +41,17 @@ Report / Delivery ← Human Review ← LLM Assistance + Source Evidence
 
 [구현 근거](docs/actual-engineering.md) · [소스별 규모·전처리·중간 산출물](docs/data-to-report.md).
 
+![수집·검수·분석·전달과 공개 예제의 현재 구성](docs/architecture/01_reporting_architecture.svg)
+
+## 수집 실행과 배치 운영
+
+![예약 배치와 단계별 실행 상태](docs/screenshots/batch-execution.png)
+
+관리자 API와 별도 호스트 실행기를 통해 허용된 수집 단계·재시도를 요청하고 실행 이력을 조회합니다.
+전체 실행 상태와 개별 단계의 성공·실패·확인 불가를 함께 관찰합니다.
+화면은 기존 기록의 읽기 전용 조회이며, 촬영을 위해 수집이나 발송을 실행하지 않았습니다.
+[제어 구조와 데이터에서 리포트까지의 연결](docs/batch-operations.md).
+
 ## 작물보호제 리포트
 
 지역·관심 작물을 기준으로 공식 병해충 정보, 기상, 시장·현장 신호를 조합합니다.
@@ -136,9 +147,7 @@ KREI 정형 지표는 current 보고서의 검수 상태와 지표의 AUTO_VALID
 
 ## 공개 구현 범위
 
-아래 도식은 공개 예제와 확장 설계의 구현 범위를 보여줍니다.
-
-![Public reporting reference architecture](docs/architecture/01_reporting_architecture.svg)
+상단 아키텍처에서 운영 수집·리포트 흐름과 PUBLIC EXECUTABLE EXAMPLE을 구분합니다.
 
 | 구분 | 범위 |
 |---|---|

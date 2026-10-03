@@ -1,5 +1,11 @@
 # Changelog — Data Provenance & Human Validation
 
+## 2026-10-03 — Execution evidence and current architecture
+
+- 관리자 실행 제어와 현재 저장된 실행·모델·배치 화면을 보강했습니다.
+- 아키텍처 SVG·Mermaid를 현재 구현에 맞추고 동일 명세 기반 렌더러를 추가했습니다.
+- 운영 경험·별도 Scientific 실행·독립 공개 예제의 책임과 캡처 범위를 연결했습니다.
+
 ## 2026-10-02 — Technical portfolio polish
 
 - Data & Workflow Facts와 데이터→분석→검수→리포트 흐름을 상단에 정리했다.
