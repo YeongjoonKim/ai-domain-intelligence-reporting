@@ -1,11 +1,8 @@
 # Data & Workflow Evidence
 
-2026-10-02 현재 report builders, seed source API, KREI review API, 관리 UI를 대조했습니다.
-오래된 설계 문서보다 현재 조회 조건·검수 상태·화면을 우선했습니다.
-
-추가 감사: [실제 적재량·선택량·단계별 산출물](data-to-report.md)을 SQL 집계와 기존 조회 함수로 확인했습니다.
-현재 KREI 정형 입력 0건과 별도 정성 fallback, 제목 정규화/품질 gate 불일치,
-private 선택 회귀 243 통과·2 실패를 기록했습니다. 아래의 기능 구현 설명이 모든 경로의 운영 성공을 뜻하지 않습니다.
+Report builders, 데이터 소스 API, KREI 검수 API와 관리 UI의 역할을 정리합니다.
+[적재량·선택량·중간 산출물](data-to-report.md)은 2026-10-02 읽기 전용 집계이며,
+KREI의 승인 정책과 제목·품질 검사 계약 불일치 같은 구현 문제를 구분해 기록합니다.
 
 ## Data Sources & Tables
 
@@ -32,11 +29,18 @@ private 선택 회귀 243 통과·2 실패를 기록했습니다. 아래의 기�
 목록 / PDF → 문서 hash·버전 → 페이지 텍스트/OCR → 작물별 결합
 → Qwen PDF-image 보정 → 관리자 텍스트 검수 → 보고서 입력.
 
-현재 정형 조회는 AUTO_VALIDATED / APPROVED 수치와 유효한 current report 및 상위 검수 상태를 함께 검사합니다.
-이번 실제 관측에서 current 21개 보고서가 REVIEW_REQUIRED여서 정형 입력은 0건이었습니다.
-텍스트는 승인본과 보정본의 출처 상태를 보존하며 승인 hash가 달라진 텍스트는 제외합니다.
-모든 자료가 사람에게 승인된 것처럼 표현하지 않습니다.
-9월호 검수 캡처는 2026년 9월 과일관측의 REVIEW_REQUIRED 상태입니다.
+정형 조회는 current 보고서의 AUTO_PARSED / REVIEWED / APPROVED 상태와
+지표의 AUTO_VALIDATED / APPROVED 상태를 함께 검사합니다. REVIEW_REQUIRED는 제외됩니다.
+
+정성 전망은 `_fetch_krei_outlooks`에서 별도로 구성합니다. 상위 보고서 조건을 충족한
+작물 텍스트가 승인됐으면 관리자 편집문→완료된 LLM 보정문→원문 순으로 선택하고,
+미승인 작물 텍스트는 원문만 사용합니다. 승인 hash 불일치 시 그 텍스트를 사용하지 않습니다.
+적합한 작물 텍스트가 없으면 페이지 추출문과 REJECTED가 아닌 지표의 교정문을
+PAGE_FALLBACK으로 결합합니다. 이 fallback은 상위 보고서 승인 gate와 별개입니다.
+
+선택된 `source_text`·`text_source`와 적격 정형 지표는 `_krei_metric_editorial`의 LLM 입력으로
+전달됩니다. 따라서 승인된 LLM 보정문은 리포트 생성에 사용되지만, 미승인 보정문을 자동 채택하지는 않습니다.
+텍스트 승인·보고서 승인과 수치 지표의 검수는 별도 작업이며 [상세 승인 경로](data-to-report.md#2-storage-is-not-report-eligibility)에 정리했습니다.
 
 ## Report Builders
 
